@@ -4,7 +4,7 @@
  */
 
 import { DatePicker, TimePicker } from 'antd';
-import dateHoc from '../../components/hoc/dateHoc';
+import dateHoc from '../../pages/generator/components/hoc/dateHoc';
 
 export default function date(p) {
   const { format = 'dateTime' } = p.schema;

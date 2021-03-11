@@ -28,7 +28,7 @@ module.exports = {
 		extensions: ['.js', '.jsx', '.scss', '.json'],
 		alias: {
 			"@": pathResolve('src'),
-			"@components": pathResolve('src/components'),
+			"@material": pathResolve('src/material'),
 			"@pages": pathResolve('src/pages'),
 			"@styles": pathResolve('src/styles'),
 			"@images": pathResolve('src/images'),

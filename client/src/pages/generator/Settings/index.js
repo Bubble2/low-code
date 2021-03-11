@@ -5,8 +5,13 @@ export const defaultCommonSettings = {
     description: '数据存储的名称/英文/必填',
     type: 'string',
     'ui:widget': 'idInput',
+  },
+  $databaseName: {
+    title: '数据库字段名称',
+    description: '会存储在数据库中，必填',
+    type: 'string',
+    'ui:widget': 'idInput',
   }
-  
 };
 
 // widget 用于schema中每个元素对应的右侧配置知道用哪个setting
@@ -17,7 +22,6 @@ export const elements = [
     name: 'input',
     widget: 'input',
     schema: {
-      "$id": "ui-input",
       title: '输入框',
       type: 'string',
     },

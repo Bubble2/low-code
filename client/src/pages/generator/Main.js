@@ -1,10 +1,9 @@
 import React, { useEffect, forwardRef } from 'react';
 import { useSet } from './hooks';
 import FRWrapper from './FRWrapper';
-import { widgets as defaultWidgets } from './widgets/ui';
-import { layoutWidgets as defaultLayoutWidgets } from './widgets/layout';
-import { bizWidgets as defaultBizWidgets } from './widgets/biz';
-import { components as defaultComponents } from './components';
+import { widgets as defaultWidgets } from '@material/base';
+import { layoutWidgets as defaultLayoutWidgets } from '@material/layout';
+import { bizWidgets as defaultBizWidgets } from '@material/biz';
 import { mapping } from './mapping';
 import './atom.scss';
 import './Main.scss';
@@ -78,7 +77,6 @@ function App(
     simple: false,
     mapping: _mapping,
     widgets: { ...defaultWidgets, ...defaultLayoutWidgets, ...defaultBizWidgets, ...widgets },
-    // components: {...defaultComponents},
     selected
   };
 

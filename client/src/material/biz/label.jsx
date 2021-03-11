@@ -1,5 +1,5 @@
 import React from 'react';
-import {widgets} from '../ui';
+import {widgets} from '../base';
 
 const Input = widgets.input;
 const DatePicker = widgets.date;
