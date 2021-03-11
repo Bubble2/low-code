@@ -5,8 +5,13 @@ export const defaultCommonSettings = {
     description: '数据存储的名称/英文/必填',
     type: 'string',
     'ui:widget': 'idInput',
+  },
+  $databaseName: {
+    title: '数据库字段名称',
+    description: '会存储在数据库中，必填',
+    type: 'string',
+    'ui:widget': 'idInput',
   }
-  
 };
 
 // widget 用于schema中每个元素对应的右侧配置知道用哪个setting
@@ -59,10 +64,44 @@ export const elements = [
   }
 ];
 
+export const bizElements = [
+  {
+    text: 'label',
+    name: 'label',
+    widget: 'label',
+    schema: {
+      title: '请购日期',
+      type: 'string',
+      'ui:widget': 'label'
+    },
+    setting: {
+      title: {
+        title: '标题',
+        type: 'string'
+      },
+      isRequired: {
+        title: '是否必填',
+        type: 'boolean'
+      },
+      inputType: {
+        title: '输入框类型',
+        type: 'string',
+        enum: ['input', 'datePicker'],
+        enumNames: ['输入框', '日期选择'],
+        default: 'input'
+      }
+    },
+  },
+];
+
 export const defaultSettings = [
   {
     title: '基础组件',
     widgets: elements
+  },
+  {
+    title: '业务组件',
+    widgets: bizElements
   }
 ];
 

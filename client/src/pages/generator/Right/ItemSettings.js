@@ -86,18 +86,18 @@ export default function ItemSettings() {
         <div className="fr-content">
           <div className="w-100">
             <div className="flex flex-wrap pl0">
-                {/* <FRWrapper
+                <FRWrapper
                   schema={settingSchema}
                   formData={settingData}
                   onChange={onDataChange}
                   widgets={components}
                   preview={true}
-                /> */}
-                <Renderer
+                />
+                {/* <Renderer
                   schema={settingSchema.schema}
                   formData={settingData}
                   onChange={onDataChange}
-                />
+                /> */}
             </div>
           </div>
         </div>

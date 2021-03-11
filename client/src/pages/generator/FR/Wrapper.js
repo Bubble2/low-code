@@ -225,7 +225,7 @@ export default function Wrapper({
     <div
       ref={boxRef}
       style={overwriteStyle}
-      className={`field-wrapper relative w-100`}
+      className={`field-wrapper relative`}
       onClick={handleClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
