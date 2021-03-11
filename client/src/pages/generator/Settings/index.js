@@ -17,6 +17,7 @@ export const elements = [
     name: 'input',
     widget: 'input',
     schema: {
+      "$id": "ui-input",
       title: '输入框',
       type: 'string',
     },
@@ -59,10 +60,44 @@ export const elements = [
   }
 ];
 
+export const bizElements = [
+  {
+    text: 'label',
+    name: 'label',
+    widget: 'label',
+    schema: {
+      title: '请购日期',
+      type: 'string',
+      'ui:widget': 'label'
+    },
+    setting: {
+      title: {
+        title: '标题',
+        type: 'string'
+      },
+      isRequired: {
+        title: '是否必填',
+        type: 'boolean'
+      },
+      inputType: {
+        title: '输入框类型',
+        type: 'string',
+        enum: ['input', 'datePicker'],
+        enumNames: ['输入框', '日期选择'],
+        default: 'input'
+      }
+    },
+  },
+];
+
 export const defaultSettings = [
   {
     title: '基础组件',
     widgets: elements
+  },
+  {
+    title: '业务组件',
+    widgets: bizElements
   }
 ];
 

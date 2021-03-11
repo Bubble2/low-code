@@ -1,5 +1,11 @@
+import map from './map';
 import button from './button';
+import input from './input';
+import date from './date';
 
 export const widgets = {
-  button
+  map,
+  button,
+  input,
+  date
 };

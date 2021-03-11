@@ -3,6 +3,7 @@ import { useSet } from './hooks';
 import FRWrapper from './FRWrapper';
 import { widgets as defaultWidgets } from './widgets/ui';
 import { layoutWidgets as defaultLayoutWidgets } from './widgets/layout';
+import { bizWidgets as defaultBizWidgets } from './widgets/biz';
 import { components as defaultComponents } from './components';
 import { mapping } from './mapping';
 import './atom.scss';
@@ -76,7 +77,8 @@ function App(
     preview,
     simple: false,
     mapping: _mapping,
-    widgets: { ...defaultWidgets, ...defaultLayoutWidgets, ...defaultComponents, ...widgets },
+    widgets: { ...defaultWidgets, ...defaultLayoutWidgets, ...defaultBizWidgets, ...widgets },
+    // components: {...defaultComponents},
     selected
   };
 
