@@ -3,14 +3,22 @@ import { Button } from '@abiz/rc-aeps';
 
 export default (props) => {
 
-  const {schema} = props;
-  const buttonType = schema.buttonType;
-  const otherProps = {
-    onClick:()=>{
+  const {
+    schema,
+    onClick,
+    disabled,
+    readOnly,
+    ...otherProps
+  } = props;
 
-    }
+  const allProps = {
+    onClick,
+    disabled,
+    readOnly,
+    ...otherProps.options
   }
+
   return (
-    <Button>{props.schema.title}</Button>
+    <Button {...allProps}>{schema.title}</Button>
   );
 }

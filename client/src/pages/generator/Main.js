@@ -37,7 +37,7 @@ function App(
       
     }, // form-render 的全局props等
     preview: false, // preview = false 是编辑模式
-    schema: {},
+    schema: {}, 
     selected: undefined, // 被选中的$id, 如果object/array的内部，以首字母0标识
   });
 
@@ -58,8 +58,6 @@ function App(
     selected,
   } = state;
 
-  const _frProps = { ...frProps };
-
   const onChange = data => {
     setState({ formData: data });
   };
@@ -70,12 +68,11 @@ function App(
     setState({ schema: result });
   };
 
-  const _mapping = { ...mapping};
 
   const rootState = {
     preview,
     simple: false,
-    mapping: _mapping,
+    mapping,
     widgets: { ...defaultWidgets, ...defaultLayoutWidgets, ...defaultBizWidgets, ...widgets },
     selected
   };
@@ -96,7 +93,7 @@ function App(
     onSchemaChange,
     ...rootState, // 顶层的state
     userProps, // 用户传入的props
-    frProps: _frProps, // fr顶层的props
+    frProps // fr顶层的props
   };
 
   return <FRWrapper ref={ref} {...allProps} />;

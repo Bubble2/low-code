@@ -110,7 +110,7 @@ function Wrapper(
   let displaySchemaString = '';
   try {
     const _schema = idToSchema(flattenWithData, '#', true);
-    displaySchema = transformTo({ schema: _schema, ...frProps });
+    displaySchema = { schema: _schema, ...frProps };
     displaySchemaString = JSON.stringify(displaySchema, null, 2);
   } catch (error) { }
 
@@ -247,7 +247,7 @@ function Wrapper(
 const FRWrapper = forwardRef(Wrapper);
 
 FRWrapper.defaultProps = {
-  labelWidth: 120,
+  
 };
 
 export default FRWrapper;

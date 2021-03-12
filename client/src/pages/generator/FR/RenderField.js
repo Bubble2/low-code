@@ -35,9 +35,7 @@ const RenderField = ({
     disabled: schema['ui:disabled'],
     readOnly: schema['ui:readOnly'],
     hidden: schema['ui:hidden'],
-    options: schema['ui:options'],
-    labelWidth: schema['ui:labelWidth'],
-    width: schema['ui:width'],
+    options: schema['ui:options']
   };
   
   return (

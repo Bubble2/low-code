@@ -2,17 +2,26 @@ import React from 'react';
 import { Input } from '@abiz/rc-aeps';
 
 export default (props) => {
-  const { options = {} } = props;
+
+  const {
+    schema,
+    value,
+    disabled,
+    readOnly,
+    ...otherProps
+  } = props;
+
   const handleChange = (e) => props.onChange(e.target.value);
+
+  const allProps = {
+    value,
+    disabled,
+    readOnly,
+    onChange: handleChange,
+    ...otherProps.options
+  }
+
   return (
-    <Input
-        {...options}
-        value={props.value}
-        disabled={props.disabled || props.readOnly}
-        addonAfter={
-          options.addonAfter
-        }
-        onChange={handleChange}
-      />
+    <Input {...allProps} />
   );
 }

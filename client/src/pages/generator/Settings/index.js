@@ -68,7 +68,7 @@ export const bizElements = [
   {
     text: 'label',
     name: 'label',
-    widget: 'label',
+    widget: 'label', //这个一定要有，默认值ui:widget字段和这个widget名称相同时能找到这个下面的setting
     schema: {
       title: '请购日期',
       type: 'string',
@@ -89,6 +89,22 @@ export const bizElements = [
         enum: ['input', 'datePicker'],
         enumNames: ['输入框', '日期选择'],
         default: 'input'
+      }
+    },
+  },
+  {
+    text: '物品弹层',
+    name: 'goodsModal',
+    widget: 'goodsModal',
+    schema: {
+      title: '物品弹层',
+      type: 'string',
+      'ui:widget': 'goodsModal'
+    },
+    setting: {
+      title: {
+        title: '标题',
+        type: 'string'
       }
     },
   },

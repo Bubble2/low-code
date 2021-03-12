@@ -17,7 +17,7 @@ const Root = (props, ref) => {
                 importButton: {
                   title: '批量导入请购单',
                   type: 'html',
-                  'ui:widget': 'button'
+                  'ui:widget': 'goodsModal'
                 }
               }
           },
