@@ -55,11 +55,11 @@ const FR = ({ id = '#', preview = false }) => {
   return (
     <Wrapper $id={id} item={item}>
       <RenderField {...fieldProps}>
-        {(isObj || isList) && (
+        {(isObj || isList) && item.children.length===0?
           <Wrapper $id={id} item={item} inside>
-            {childrenElement || <div className="h2" />}
-          </Wrapper>
-        )}
+            <div className="h2">点击新增组件放此位置</div>
+          </Wrapper>:childrenElement
+        }
       </RenderField>
     </Wrapper>
   );

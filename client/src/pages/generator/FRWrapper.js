@@ -4,6 +4,7 @@ import React, {
   forwardRef,
   useImperativeHandle,
 } from 'react';
+import { getKeyFromUniqueId } from './utils';
 import { useSet } from './hooks';
 import copyTOClipboard from 'copy-text-to-clipboard';
 import Left from './Left';
@@ -52,6 +53,37 @@ function Wrapper(
   const flattenWithData = dataToFlatten(flatten, formData);
 
   const onFlattenChange = newFlatten => {
+
+    //根据子级给父级添加required属性
+    for (let key in newFlatten) {
+      if (newFlatten[key].children.length > 0) {
+        try{
+          newFlatten[key].children.forEach((child) => {
+            if(!newFlatten[child]){
+              throw new Error()
+            } 
+            const parent = newFlatten[child].parent;
+            const childKey = getKeyFromUniqueId(child);
+  
+            if (newFlatten[child].schema && 'required' in newFlatten[child].schema && typeof newFlatten[child].schema.required === 'boolean') {
+              if(!newFlatten[parent].schema.required){
+                newFlatten[parent].schema.required = [];
+              }
+  
+              if (newFlatten[child].schema.required === true) {
+                  newFlatten[parent].schema.required.indexOf(childKey) === -1 && newFlatten[parent].schema.required.push(childKey);
+              } else if(newFlatten[child].schema.required === false){
+                  newFlatten[parent].schema.required = newFlatten[parent].schema.required.filter(item => item !== childKey);
+              }
+            }
+          });
+        }catch(e){
+          console.log(e)
+        }
+        
+      }
+    }
+    
     const newSchema = idToSchema(newFlatten);
     const newData = flattenToData(newFlatten);
     // 判断只有schema变化时才调用，一般需求的用户不需要
@@ -247,7 +279,7 @@ function Wrapper(
 const FRWrapper = forwardRef(Wrapper);
 
 FRWrapper.defaultProps = {
-  
+
 };
 
 export default FRWrapper;

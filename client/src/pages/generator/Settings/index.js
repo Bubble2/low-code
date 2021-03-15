@@ -5,12 +5,6 @@ export const defaultCommonSettings = {
     description: '数据存储的名称/英文/必填',
     type: 'string',
     'ui:widget': 'idInput',
-  },
-  $databaseName: {
-    title: '数据库字段名称',
-    description: '会存储在数据库中，必填',
-    type: 'string',
-    'ui:widget': 'idInput',
   }
 };
 
@@ -43,22 +37,12 @@ export const elements = [
     },
     setting: {
       title: {
-        title: '标题',
+        title: '按钮名称',
         type: 'string'
       },
-      buttonType: {
-        title: '按钮类型',
-        type: 'string',
-        enum: ['link', 'event'],
-        enumNames: ['链接', '事件'],
-        default: 'link'
-      },
-      linkUrl: {
+      href: {
         title: '链接url',
-        type: 'string',
-        'ui:hidden':(formData, rootValue)=>{
-          return rootValue.buttonType.value !== "link"
-        }
+        type: 'string'
       }
     }
   }
@@ -79,7 +63,7 @@ export const bizElements = [
         title: '标题',
         type: 'string'
       },
-      isRequired: {
+      required: {
         title: '是否必填',
         type: 'boolean'
       },
@@ -110,6 +94,31 @@ export const bizElements = [
   },
 ];
 
+export const layoutElements = [
+  {
+    text: 'mainFields',
+    name: 'mainFields',
+    widget: 'mainFields', //这个一定要有，默认值ui:widget字段和这个widget名称相同时能找到这个下面的setting
+    schema: {
+      title: '单据主要字段',
+      type: 'object',
+      'ui:widget': 'mainFields'
+    },
+    setting: {
+      layout: {
+        title: '整体布局',
+        type: 'string',
+        enum: ['3', '6'],
+        enumNames: ['一行三列', '一行六列' ],
+        options: {
+          placeholder: '默认一行三列'
+        },
+        default: '3'
+      }
+    },
+  },
+]
+
 export const defaultSettings = [
   {
     title: '基础组件',
@@ -118,6 +127,10 @@ export const defaultSettings = [
   {
     title: '业务组件',
     widgets: bizElements
+  },
+  {
+    title: '布局组件',
+    widgets: layoutElements
   }
 ];
 

@@ -18,7 +18,7 @@ export default (props) => {
 
   return (
     <li className="input-item">
-        <label className="input-item-tit">{schema.isRequired && <span className="required">*</span>}{schema.title}</label>
+        <label className="input-item-tit">{schema.required && <span className="required">*</span>}{schema.title}</label>
         <div className="input-item-bd">
             <InputWidget {...props}/>
         </div>

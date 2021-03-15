@@ -3,7 +3,7 @@
  * 日期组件
  */
 
-import { DatePicker, TimePicker } from 'antd';
+import { DatePicker, TimePicker } from '@abiz/rc-aeps';
 import dateHoc from '@pages/generator/components/hoc/dateHoc';
 
 export default function date(p) {

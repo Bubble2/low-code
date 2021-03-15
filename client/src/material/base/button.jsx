@@ -11,14 +11,22 @@ export default (props) => {
     ...otherProps
   } = props;
 
+  const {
+    title,
+     href,
+     target
+    } = schema;
+
   const allProps = {
     onClick,
     disabled,
     readOnly,
+    href,
+    target,
     ...otherProps.options
   }
 
   return (
-    <Button {...allProps}>{schema.title}</Button>
+    <Button {...allProps}>{title}</Button>
   );
 }

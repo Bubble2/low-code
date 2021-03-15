@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import './Wrapper.scss';
 import { useGlobal, useStore } from '../hooks';
 import { copyItem, getKeyFromUniqueId, dropItem } from '../utils';
-import { DeleteOutlined, CopyOutlined, DragOutlined } from '@ant-design/icons';
+import { DeleteOutlined, CopyOutlined, DragOutlined } from '@abiz/icons-aeps';
 import { useDrag, useDrop } from 'react-dnd';
 
 export default function Wrapper({
@@ -180,9 +180,7 @@ export default function Wrapper({
       overflow: 'auto',
       backgroundColor: '#f6f5f6',
     };
-  } else if (type === 'object') {
-    overwriteStyle = { ...overwriteStyle, paddingTop: 12 };
-  }
+  } 
   if (isActive) {
     if (inside) {
       overwriteStyle = {

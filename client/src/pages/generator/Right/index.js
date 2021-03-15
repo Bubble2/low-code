@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useStore, useSet } from '../hooks';
-import { RightOutlined } from '@ant-design/icons';
+import { RightOutlined } from '@abiz/icons-aeps';
 import './index.scss';
 import ItemSettings from './ItemSettings';
 import GlobalSettings from './GlobalSettings';
