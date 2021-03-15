@@ -29,6 +29,8 @@ module.exports = {
 		alias: {
 			"@": pathResolve('src'),
 			"@material": pathResolve('src/material'),
+			"@generator": pathResolve('src/generator'),
+			"@renderer": pathResolve('src/renderer'),
 			"@pages": pathResolve('src/pages'),
 			"@styles": pathResolve('src/styles'),
 			"@images": pathResolve('src/images'),

@@ -4,7 +4,7 @@ const routes = [
     {
         path: '/',
         exact: true,
-        component: asyncLoad(() => import('@pages/generator'))
+        component: asyncLoad(() => import('@pages/custom-config'))
     },
     {
         path: '/renderer',

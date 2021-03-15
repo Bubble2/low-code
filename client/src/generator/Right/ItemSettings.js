@@ -2,7 +2,6 @@ import React from 'react';
 import FRWrapper from '../FRWrapper';
 import { useStore } from '../hooks';
 import { components } from '../components';
-import Renderer from '@pages/renderer/antd';
 
 import {
   defaultSettings,

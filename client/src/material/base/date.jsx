@@ -4,7 +4,7 @@
  */
 
 import { DatePicker, TimePicker } from '@abiz/rc-aeps';
-import dateHoc from '@pages/generator/components/hoc/dateHoc';
+import dateHoc from '@generator/components/hoc/dateHoc';
 
 export default function date(p) {
   const { format = 'dateTime' } = p.schema;
