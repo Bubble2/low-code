@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { PictureOutlined } from '@ant-design/icons';
-import { Input, Popover } from 'antd';
+import { PictureOutlined } from '@abiz/icons-aeps';
+import { Input, Popover } from '@abiz/rc-aeps';
 import useDebouncedCallback from 'use-debounce/lib/useDebouncedCallback';
 import previewContent from '../../components/previewContent';
 

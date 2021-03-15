@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch } from 'antd';
+import { Switch } from '@abiz/rc-aeps';
 
 export default function sw(p) {
   return (

@@ -9,9 +9,9 @@ import {
   PlusCircleOutlined,
   DeleteOutlined,
   CopyOutlined,
-} from '@ant-design/icons';
+} from '@abiz/icons-aeps';
 import { isObj } from '../../base/utils';
-import { Button, Modal, Drawer, Pagination } from 'antd';
+import { Button, Modal, Drawer, Pagination } from '@abiz/rc-aeps';
 
 const isComponent = comp => {
   const type = typeof comp;

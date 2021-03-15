@@ -3,7 +3,7 @@
  * 多选组件
  */
 
-import { Select } from 'antd';
+import { Select } from '@abiz/rc-aeps';
 import multiSelectHoc from '../../components/multiSelectHoc';
 
 export default multiSelectHoc(Select);

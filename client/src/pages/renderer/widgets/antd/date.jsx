@@ -4,7 +4,7 @@
  */
 
 import React, { useState } from 'react';
-import { DatePicker, TimePicker } from 'antd';
+import { DatePicker, TimePicker } from '@abiz/rc-aeps';
 import moment from 'moment';
 import { getFormat } from '../../base/utils';
 

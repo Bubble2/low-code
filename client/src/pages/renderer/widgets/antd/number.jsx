@@ -3,7 +3,7 @@
  * 数字输入组件
  */
 
-import { InputNumber } from 'antd';
+import { InputNumber } from '@abiz/rc-aeps';
 import numberHoc from '../../components/numberHoc';
 
 export default numberHoc(InputNumber);

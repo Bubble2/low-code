@@ -8,7 +8,7 @@ const routes = [
     },
     {
         path: '/renderer',
-        component: asyncLoad(() => import('@pages/renderer/antd'))
+        component: asyncLoad(() => import('@pages/demo'))
     }
 ];
 

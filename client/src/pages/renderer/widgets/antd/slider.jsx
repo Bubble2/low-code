@@ -3,7 +3,7 @@
  * 滑动组件
  */
 
-import { InputNumber, Slider } from 'antd';
+import { InputNumber, Slider } from '@abiz/rc-aeps';
 import sliderHoc from '../../components/sliderHoc';
 
 export default sliderHoc(Slider, InputNumber);

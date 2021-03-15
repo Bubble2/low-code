@@ -3,7 +3,7 @@
  * 单选组件
  */
 import React from 'react';
-import { Radio } from 'antd';
+import { Radio } from '@abiz/rc-aeps';
 import RadioHoc from '../../components/radioHoc';
 
 const RadioComponent = p => {

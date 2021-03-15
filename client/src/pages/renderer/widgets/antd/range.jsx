@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input } from 'antd';
+import { Input } from '@abiz/rc-aeps';
 
 export default function range({ value, onChange, name, ...rest }) {
   return (

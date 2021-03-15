@@ -3,7 +3,7 @@
  * 日历多选组件
  */
 
-import { DatePicker, TimePicker } from 'antd';
+import { DatePicker, TimePicker } from '@abiz/rc-aeps';
 import RangeHoc from '../../components/rangeHoc';
 
 const { RangePicker: DateRange } = DatePicker;

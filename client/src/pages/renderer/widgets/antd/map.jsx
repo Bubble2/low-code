@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Drawer } from 'antd';
+import { Modal, Drawer } from '@abiz/rc-aeps';
 import { isObj } from '../../base/utils';
 import Map from '../../components/map';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Checkbox } from 'antd';
+import { Checkbox } from '@abiz/rc-aeps';
 
 export default function radio(p) {
   return (

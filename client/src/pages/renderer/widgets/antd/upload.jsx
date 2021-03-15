@@ -1,6 +1,6 @@
 import React from 'react';
-import { UploadOutlined } from '@ant-design/icons';
-import { Upload, message, Button } from 'antd';
+import { UploadOutlined } from '@abiz/icons-aeps';
+import { Upload, message, Button } from '@abiz/rc-aeps';
 
 export default function upload({
   action,

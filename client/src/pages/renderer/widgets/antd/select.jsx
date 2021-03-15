@@ -3,7 +3,7 @@
  * 选择组件
  */
 
-import { Select } from 'antd';
+import { Select } from '@abiz/rc-aeps';
 import selectHoc from '../../components/selectHoc';
 
 export default selectHoc(Select);

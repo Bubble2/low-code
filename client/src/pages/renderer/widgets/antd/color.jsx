@@ -1,7 +1,7 @@
 import React from 'react';
 import ColorPicker from 'rc-color-picker';
 import Color from 'color';
-import { Input } from 'antd';
+import { Input } from '@abiz/rc-aeps';
 import 'rc-color-picker/assets/index.css';
 
 export default function color(p) {
