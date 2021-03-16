@@ -6,6 +6,7 @@ const { TextArea } = Input;
 const defaultValue = {
     schema: {
         type: 'object',
+        'ui:widget': 'addForm',
         properties: {
             mainHd: {
                 title: '头部区域',
