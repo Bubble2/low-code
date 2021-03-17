@@ -8,6 +8,12 @@ export const defaultCommonSettings = {
   }
 };
 
+const fieldCarrySetting = {
+  title: '把弹层选中数据字段值带入页面其它字段',
+  type: 'html',
+  'ui:widget': 'fieldCarryItem'
+}
+
 // widget 用于schema中每个元素对应的右侧配置知道用哪个setting
 
 export const elements = [
@@ -85,6 +91,7 @@ export const bizElements = [
           placeholder: '请选择'
         }
       },
+      fieldCarry: fieldCarrySetting,
       required: {
         title: '是否必填',
         type: 'boolean'

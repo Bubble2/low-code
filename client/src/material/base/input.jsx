@@ -5,7 +5,7 @@ export default (props) => {
 
   const {
     schema,
-    value,
+    value=schema.default,
     disabled,
     readOnly,
     ...otherProps
@@ -14,7 +14,7 @@ export default (props) => {
   const handleChange = (e) => props.onChange(e.target.value);
 
   const allProps = {
-    value: value || schema.default,
+    value,
     disabled,
     readOnly,
     onChange: handleChange,

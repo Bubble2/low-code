@@ -32,13 +32,13 @@ export default (props) => {
   let extraProps = {};
 
   if(schema.selector){
-    const SelectorMap = {
+    const selectorMap = {
       'userModal': UserModal
     }
-    const Selector = SelectorMap[schema.selector];
+    const Selector = selectorMap[schema.selector];
     extraProps = {
       options: {
-        addonAfter: <Selector />
+        addonAfter: <Selector {...props}/>
       }
     }
   }
