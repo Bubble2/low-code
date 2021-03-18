@@ -29,6 +29,7 @@ function Wrapper(
     schema,
     formData,
     onChange,
+    materialData4Setting,
     onSchemaChange,
     setGlobal,
     userProps = {},
@@ -44,6 +45,10 @@ function Wrapper(
   });
 
   const { simple = true, preview } = rootState;
+
+  const {
+    submit,
+  } = userProps;
 
   let _schema = {};
   if (schema) {
@@ -110,6 +115,7 @@ function Wrapper(
       },
       formData: {},
       selected: undefined,
+      materialData: null
     });
   };
 
@@ -152,6 +158,10 @@ function Wrapper(
     toggleModal();
   };
 
+  const handleSubmit = () => {
+    submit(displaySchema);
+  };
+
   const getValue = () => {
     return displaySchema;
   };
@@ -170,6 +180,7 @@ function Wrapper(
         schema: _schema,
         formData: {},
         selected: undefined,
+        materialData: null,
         frProps: { ...state.frProps, ...rest },
       }));
     } catch (error) {
@@ -201,7 +212,7 @@ function Wrapper(
     return (
       <Ctx.Provider value={setGlobal}>
         <StoreCtx.Provider value={store}>
-          <FR preview={true} />
+          <FR preview={true} materialData4Setting={materialData4Setting}/>
         </StoreCtx.Provider>
       </Ctx.Provider>
     );
@@ -231,10 +242,13 @@ function Wrapper(
               <Button type="primary" className="mr2" onClick={toggleModal}>
                 导出schema
               </Button>
+              <Button type="primary" className="mr2" onClick={handleSubmit}>
+                  保存
+                </Button>
             </div>
             <div className="dnd-container">
               <div style={{ height: preview ? 33 : 0 }}></div>
-              <FR preview={preview} />
+              <FR preview={preview}/>
             </div>
           </div>
           <Right globalProps={frProps} />

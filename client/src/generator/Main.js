@@ -39,6 +39,7 @@ function App(
     preview: false, // preview = false 是编辑模式
     schema: {}, 
     selected: undefined, // 被选中的$id, 如果object/array的内部，以首字母0标识
+    materialData: null
   });
 
   // 收口点 propsSchema 到 schema 的转换 (一共3处，其他两个是 importSchema 和 setValue，在 FRWrapper 文件)
@@ -56,6 +57,7 @@ function App(
     preview,
     schema,
     selected,
+    materialData
   } = state;
 
   const onChange = data => {
@@ -74,7 +76,8 @@ function App(
     simple: false,
     mapping,
     widgets: { ...defaultWidgets, ...defaultLayoutWidgets, ...defaultBizWidgets, ...widgets },
-    selected
+    selected,
+    materialData
   };
 
   const userProps = {

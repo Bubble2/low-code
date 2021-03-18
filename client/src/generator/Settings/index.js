@@ -8,6 +8,12 @@ export const defaultCommonSettings = {
   }
 };
 
+const fieldCarrySetting = {
+  title: '把弹层选中数据字段值带入页面其它字段',
+  type: 'html',
+  'ui:widget': 'fieldCarryItem'
+}
+
 // widget 用于schema中每个元素对应的右侧配置知道用哪个setting
 
 export const elements = [
@@ -50,30 +56,53 @@ export const elements = [
 
 export const bizElements = [
   {
-    text: 'label',
-    name: 'label',
-    widget: 'label', //这个一定要有，默认值ui:widget字段和这个widget名称相同时能找到这个下面的setting
+    text: 'inputItem',
+    name: 'inputItem',
+    widget: 'inputItem', //这个一定要有，默认值ui:widget字段和这个widget名称相同时能找到这个下面的setting
     schema: {
       title: '请购日期',
       type: 'string',
-      'ui:widget': 'label'
+      'ui:widget': 'inputItem',
+      default: '23123',
+      inputType: 'input',
+      requiredMessage: '此项为必填项！'
     },
     setting: {
       title: {
         title: '标题',
         type: 'string'
       },
-      required: {
-        title: '是否必填',
-        type: 'boolean'
+      default: {
+        title: '默认值',
+        type: 'string',
       },
       inputType: {
         title: '输入框类型',
         type: 'string',
         enum: ['input', 'datePicker'],
         enumNames: ['输入框', '日期选择'],
-        default: 'input'
-      }
+      },
+      selector: {
+        title: '快捷录入方式',
+        type: 'string',
+        enum: ['userModal'],
+        enumNames: ['人员选择弹层'],
+        'ui:options': {
+          placeholder: '请选择'
+        }
+      },
+      fieldCarry: fieldCarrySetting,
+      required: {
+        title: '是否必填',
+        type: 'boolean'
+      },
+      requiredMessage: {
+        title: '必填项报错文案',
+        type: 'string',
+        'ui:options': {
+          placeholder: '不填则使用默认文案！'
+        }
+      },
     },
   },
   {
@@ -91,7 +120,7 @@ export const bizElements = [
         type: 'string'
       }
     },
-  },
+  }
 ];
 
 export const layoutElements = [

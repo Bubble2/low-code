@@ -1,17 +1,16 @@
 import React from 'react';
-import { Input } from '@abiz/rc-aeps';
+import { DatePicker} from '@abiz/rc-aeps';
 
-export default (props) => {
-
+export default (props)=> {
   const {
     schema,
-    value=schema.default,
+    value,
     disabled,
     readOnly,
     ...otherProps
   } = props;
 
-  const handleChange = (e) => props.onChange(e.target.value);
+  const handleChange = (date, dateString) => props.onChange(date, dateString);
 
   const allProps = {
     value,
@@ -22,6 +21,6 @@ export default (props) => {
   }
 
   return (
-    <Input {...allProps} />
+    <DatePicker {...allProps} />
   );
 }

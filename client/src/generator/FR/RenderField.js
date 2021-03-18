@@ -5,6 +5,8 @@ import { getWidgetName } from '../mapping';
 const RenderField = ({
   $id,
   item,
+  onSelect,
+  materialData4Setting,
   children,
 }) => {
   const { schema, data } = item;
@@ -43,6 +45,8 @@ const RenderField = ({
       <Widget
         value={data}
         onChange={onChange}
+        onSelect={onSelect}
+        materialData4Setting={materialData4Setting}
         schema={schema}
         {...usefulWidgetProps}
         children={children}

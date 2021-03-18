@@ -1,11 +1,13 @@
 import React, { useState, useRef } from 'react';
 import Generator from '@generator';
 import { Button, Modal, Input } from '@abiz/rc-aeps';
+import axios from '@utils/axios';
 const { TextArea } = Input;
 
 const defaultValue = {
     schema: {
         type: 'object',
+        'ui:widget': 'addForm',
         properties: {
             mainHd: {
                 title: '头部区域',
@@ -59,9 +61,12 @@ const defaultValue = {
 
 const Demo = () => {
     const genRef = useRef(); // class组件用 React.createRef()
-
+    const submitHandle = async (displaySchema)=>{
+        const res = await axios.post('https://focusapi.vemic.com/mock/54/lowCode/submit', displaySchema);
+        console.log('res', res);
+    }
     return (
-        <Generator ref={genRef} defaultValue={defaultValue} />
+        <Generator ref={genRef} defaultValue={defaultValue} submit={submitHandle}/>
     );
 };
 

@@ -1,3 +1,4 @@
+import addForm from './addForm';
 import mainHd from './mainHd';
 import mainBd from './mainBd';
 import mainFields from './mainFields';
@@ -7,6 +8,7 @@ import goodsTable from './goodsTable';
 import mainOpe from './mainOpe'
 
 export const layoutWidgets = {
+  addForm,
   mainHd,
   mainBd,
   mainFields,

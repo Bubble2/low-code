@@ -1,6 +1,6 @@
 import React from 'react';
 import FRWrapper from '../FRWrapper';
-import { useStore } from '../hooks';
+import { useStore, useGlobal } from '../hooks';
 import { components } from '../components';
 
 import {
@@ -11,11 +11,12 @@ import {
 import { getWidgetName } from '../mapping';
 import { isObject } from '../utils';
 
-export default function ItemSettings() {
+export default function ItemSettings({materialData}) {
   const { selected, flatten, onItemChange, userProps = {} } = useStore();
   const { settings, commonSettings } = userProps;
   let settingSchema = {};
   let settingData = {};
+  const setGlobal = useGlobal();
 
   const getWidgetList = (settings, commonSettings) => {
     let widgetList = [];
@@ -90,6 +91,7 @@ export default function ItemSettings() {
                   formData={settingData}
                   onChange={onDataChange}
                   widgets={components}
+                  materialData4Setting={materialData}
                   preview={true}
                 />
                 {/* <Renderer
