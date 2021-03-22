@@ -30,7 +30,91 @@ const schema = {
       "other": {
         "title": "其他",
         "type": "object",
-        "ui:widget": "childComponent"
+        // "ui:widget": "childComponent"
+        "properties": {
+          "modal": {
+            "title": "弹层隐藏部分配置",
+            "description": "目前支持modal/drawer",
+            "type": "object",
+            "properties": {
+              "obj1": {
+                "title": "object + modal",
+                "type": "object",
+                "ui:options": {
+                  "modal": false
+                },
+                "properties": {
+                  "input1": {
+                    "title": "输入框1",
+                    "type": "string"
+                  },
+                  "input2": {
+                    "title": "输入框2",
+                    "type": "string"
+                  }
+                }
+              },
+              "list1": {
+                "title": "list + modal",
+                "type": "array",
+                "ui:options": {
+                  "modal": {
+                    "text": "配置完全参考antd/fusion文档",
+                    "mask": true,
+                    "width": 400
+                  }
+                },
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "input1": {
+                      "title": "输入框1",
+                      "name": "input-1",
+                      "type": "string"
+                    },
+                    "input2": {
+                      "title": "输入框2",
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "list3": {
+                "title": "list套list",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "input1": {
+                      "title": "简单输入框",
+                      "type": "string"
+                    },
+                    "list4": {
+                      "title": "数组",
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "input1": {
+                            "title": "输入框1",
+                            "type": "string"
+                          },
+                          "input2": {
+                            "title": "输入框2",
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "ui:options": {
+                        "drawer": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
 };
@@ -65,9 +149,9 @@ function Index() {
           onValidate={setValid}
           showValidate={showValidate}
           displayType="row" // 详细配置见下
-          widgets={{
-            childComponent: Child
-          }}
+          // widgets={{
+          //   childComponent: Child
+          // }}
         />
         <button onClick={onSubmit}>提交</button>
       </div>
