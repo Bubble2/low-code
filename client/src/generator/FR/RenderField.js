@@ -1,16 +1,21 @@
 import React from 'react';
-import { useStore } from '../hooks';
+import { useStore, useGlobal } from '../hooks';
 import { getWidgetName } from '../mapping';
 
 const RenderField = ({
   $id,
   item,
-  onSelect,
   materialData4Setting,
   children,
 }) => {
   const { schema, data } = item;
-  const { onItemChange, widgets, mapping } = useStore();
+  const setGlobal = useGlobal();
+  const { onItemChange, widgets, mapping, selected } = useStore();
+
+  let isSelectedComponent = selected === $id;
+  if (selected && selected[0] === '0') {
+    isSelectedComponent = selected.substring(1) === $id;
+  }
 
   let widgetName = getWidgetName(schema, mapping);
   const customWidget = schema['ui:widget'];
@@ -32,6 +37,10 @@ const RenderField = ({
     onItemChange($id, newItem);
   };
 
+  const onSelectComponent = (data)=>{
+    setGlobal({materialData: data})
+  }
+
   // TODO: useMemo
   const usefulWidgetProps = {
     disabled: schema['ui:disabled'],
@@ -45,7 +54,8 @@ const RenderField = ({
       <Widget
         value={data}
         onChange={onChange}
-        onSelect={onSelect}
+        onSelectComponent={onSelectComponent}
+        isSelectedComponent={isSelectedComponent}
         materialData4Setting={materialData4Setting}
         schema={schema}
         {...usefulWidgetProps}

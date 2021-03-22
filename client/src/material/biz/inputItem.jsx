@@ -1,18 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { widgets } from '../base';
-import Form from '../common/form';
-import UserModal from './userModal';
-import {SettingOutlined} from '@abiz/icons-aeps'
+import Form from '../base/form';
+import FormContext from '../common/formContext'
+import {getKeyFromUniqueId} from '../common/utils'
+import useUserModel from './useUserModal';
 
 
 const Input = widgets.input;
 const DatePicker = widgets.datePicker;
-
-
-const getKeyFromUniqueId = (uniqueId = '#') => {
-  const arr = uniqueId.split('/');
-  return arr[arr.length - 1];
-};
 
 const layout = {
   labelCol: { span: 8 },
@@ -21,34 +16,30 @@ const layout = {
 
 export default (props) => {
 
+  const { schema } = props;
+
+  const form = useContext(FormContext)
+
+  const uniqueId = getKeyFromUniqueId(schema.$id)
+
   const widgetMap = {
     'input': Input,
     'datePicker': DatePicker
   }
 
-  const { schema } = props;
+  let InputWidget = (schema['ui:inputType'] && widgetMap[schema['ui:inputType']]) || Input;
 
-  let InputWidget = (schema.inputType && widgetMap[schema.inputType]) || Input;
   let extraProps = {};
-
-  if(schema.selector){
-    const selectorMap = {
-      'userModal': UserModal
-    }
-    const Selector = selectorMap[schema.selector];
-    extraProps = {
-      options: {
-        addonAfter: <Selector {...props}/>
-      }
-    }
+  if(schema['ui:userModal']){
+    extraProps = useUserModel(props);
   }
 
   return (
     <Form.Item
       {...layout}
       label={schema.title}
-      name={getKeyFromUniqueId(schema.$id)}
-      rules={[{ required: schema.required, message: schema.requiredMessage }]}
+      name={uniqueId}
+      rules={[{ required: schema.required, message: schema['ui:requiredMessage'] }]}
     >
       <InputWidget {...props} {...extraProps}/>
     </Form.Item>

@@ -46,7 +46,7 @@ export const elements = [
         title: '按钮名称',
         type: 'string'
       },
-      href: {
+      'ui:href': {
         title: '链接url',
         type: 'string'
       }
@@ -62,10 +62,10 @@ export const bizElements = [
     schema: {
       title: '请购日期',
       type: 'string',
-      'ui:widget': 'inputItem',
       default: '23123',
-      inputType: 'input',
-      requiredMessage: '此项为必填项！'
+      'ui:widget': 'inputItem',
+      'ui:inputType': 'input',
+      'ui:requiredMessage': '此项为必填项！'
     },
     setting: {
       title: {
@@ -76,27 +76,22 @@ export const bizElements = [
         title: '默认值',
         type: 'string',
       },
-      inputType: {
+      'ui:inputType': {
         title: '输入框类型',
         type: 'string',
         enum: ['input', 'datePicker'],
         enumNames: ['输入框', '日期选择'],
       },
-      selector: {
-        title: '快捷录入方式',
-        type: 'string',
-        enum: ['userModal'],
-        enumNames: ['人员选择弹层'],
-        'ui:options': {
-          placeholder: '请选择'
-        }
+      'ui:userModal': {
+        title: '是否有人员选择弹层',
+        type: 'boolean',
       },
-      fieldCarry: fieldCarrySetting,
+      'ui:fieldCarry': fieldCarrySetting,
       required: {
         title: '是否必填',
         type: 'boolean'
       },
-      requiredMessage: {
+      'ui:requiredMessage': {
         title: '必填项报错文案',
         type: 'string',
         'ui:options': {

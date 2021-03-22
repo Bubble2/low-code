@@ -8,7 +8,6 @@ import { useDrag, useDrop } from 'react-dnd';
 export default function Wrapper({
   $id,
   item,
-  materialData,
   inside = false,
   children,
   style,
@@ -103,7 +102,7 @@ export default function Wrapper({
   const handleClick = e => {
     e.stopPropagation();
     const _id = inside ? '0' + $id : $id;
-    setGlobal({ selected: _id, materialData });
+    setGlobal({ selected: _id });
   };
 
   const deleteItem = e => {

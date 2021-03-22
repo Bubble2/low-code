@@ -13,8 +13,8 @@ const columns = [
     render: (text) => <a>{text}</a>,
   },
   {
-    title: 'Age',
-    dataIndex: 'age',
+    title: 'Title',
+    dataIndex: 'title',
   },
   {
     title: 'Address',
@@ -49,6 +49,16 @@ const data = [
   },
 ];
 
+const rowSelection = {
+  onChange: (selectedRowKeys, selectedRows) => {
+    console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+  },
+  getCheckboxProps: (record) => ({
+    disabled: record.name === 'Disabled User',
+    // Column configuration not to be checked
+    name: record.name,
+  }),
+};
 
 export default (props) => {
   const [visible, setVisible] = useState(false)
@@ -62,18 +72,6 @@ export default (props) => {
       props.onSelectComponent && props.onSelectComponent(columns)
     }
   },[props.isSelectedComponent])
-
-  const rowSelection = {
-    onChange: (selectedRowKeys, selectedRows) => {
-      props.onSelect && props.onSelect(selectedRows);
-      console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-    },
-    getCheckboxProps: (record) => ({
-      disabled: record.name === 'Disabled User',
-      // Column configuration not to be checked
-      name: record.name,
-    }),
-  };
 
   return (
     <>

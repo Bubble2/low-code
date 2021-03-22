@@ -52,7 +52,7 @@ export default function Right() {
       <Tabs defaultActiveKey="1" onChange={() => {}}>
         {showItemSettings && (
           <TabPane tab="组件配置" key="1">
-            <ItemSettings materialData={materialData}/>
+            <ItemSettings/>
           </TabPane>
         )}
         <TabPane tab="表单配置" key={showItemSettings ? '2' : '1'}>

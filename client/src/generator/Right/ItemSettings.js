@@ -11,8 +11,8 @@ import {
 import { getWidgetName } from '../mapping';
 import { isObject } from '../utils';
 
-export default function ItemSettings({materialData}) {
-  const { selected, flatten, onItemChange, userProps = {} } = useStore();
+export default function ItemSettings() {
+  const { selected, flatten, onItemChange, userProps = {}, materialData } = useStore();
   const { settings, commonSettings } = userProps;
   let settingSchema = {};
   let settingData = {};

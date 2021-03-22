@@ -1,10 +1,15 @@
 import React from 'react';
-import Form from '../common/form';
+import Form from '../base/form';
+import FormContext from '../common/formContext'
+
 
 export default ({ children, ...otherProps }) => {
+  const [form] = Form.useForm();
   return (
-    <Form>
-      {children}
+    <Form form={form}>
+      <FormContext.Provider value={form}>
+        {children}
+      </FormContext.Provider>
     </Form>
   );
 }

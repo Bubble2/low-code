@@ -10,7 +10,7 @@ const RenderChildren = ({ children = [], preview , ...otherProps}) => {
           preview,
           ...otherProps
         };
-        return <FR key={i.toString()} {...FRProps} />;
+        return <FR key={i.toString()}  {...FRProps} />;
       })}
     </>
   );

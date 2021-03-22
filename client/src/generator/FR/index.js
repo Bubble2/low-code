@@ -1,12 +1,13 @@
-import React, {useState} from 'react';
-import { useStore } from '../hooks';
+import React from 'react';
+import { useStore} from '../hooks';
 import RenderChildren from './RenderChildren';
 import RenderField from './RenderField';
 import Wrapper from './Wrapper';
 
 const FR = ({ id = '#', preview = false, materialData4Setting = null }) => {
-  const { flatten } = useStore();
-  const [materialData, setMaterialData] = useState(null);
+  const { flatten, selected } = useStore();
+  
+  
   const item = flatten[id];
   if (!item) return null;
 
@@ -14,16 +15,11 @@ const FR = ({ id = '#', preview = false, materialData4Setting = null }) => {
   const isObj = schema.type === 'object';
   const isList = schema.type === 'array' && schema.enum === undefined;
   const isComplex = isObj || isList;
-  
-  const onSelect = (data)=>{
-    setMaterialData(data)
-  }
 
   const fieldProps = {
     $id: id,
     item,
     isComplex,
-    onSelect,
     materialData4Setting
   };
   const childrenProps = {
@@ -60,7 +56,7 @@ const FR = ({ id = '#', preview = false, materialData4Setting = null }) => {
   }
 
   return (
-    <Wrapper $id={id} item={item} materialData={materialData}>
+    <Wrapper $id={id} item={item}>
       <RenderField {...fieldProps}>
         {(isObj || isList) && item.children.length===0?
           <Wrapper $id={id} item={item} inside>
