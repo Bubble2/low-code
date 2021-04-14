@@ -7,7 +7,7 @@ export default function map(p) {
   className += isModal ? 'fr-wrapper' : ''; // 因为modal跳出fr的dom层级了，需要重新加个顶层的className
   const _value = p.value || {};
   return (
-    <div className={className}>
+    <>
       {Object.keys(_value).map(name => {
         return p.getSubField({
           name,
@@ -40,6 +40,6 @@ export default function map(p) {
           rootValue: p.value,
         });
       })}
-    </div>
+    </>
   );
 }

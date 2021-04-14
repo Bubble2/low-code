@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import Child from './child'
+import SearchInput from './child'
 // 使用 Ant Design 风格
 import FormRender from '@renderer/antd';
 // 使用 Fusion 风格
@@ -29,8 +29,12 @@ const schema = {
       },
       "other": {
         "title": "其他",
+        "type": "string",
+        "ui:widget": "SearchInput"
+      },
+      "test": {
+        "title": "测试",
         "type": "object",
-        // "ui:widget": "childComponent"
         "properties": {
           "modal": {
             "title": "弹层隐藏部分配置",
@@ -41,7 +45,7 @@ const schema = {
                 "title": "object + modal",
                 "type": "object",
                 "ui:options": {
-                  "modal": false
+                  "modal": true
                 },
                 "properties": {
                   "input1": {
@@ -149,9 +153,7 @@ function Index() {
           onValidate={setValid}
           showValidate={showValidate}
           displayType="row" // 详细配置见下
-          // widgets={{
-          //   childComponent: Child
-          // }}
+          widgets={{SearchInput}}
         />
         <button onClick={onSubmit}>提交</button>
       </div>

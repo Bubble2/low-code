@@ -69,5 +69,5 @@ export const mapping = {
   'range:year': 'dateRange',
   '*?enum': 'select',
   'array?enum': 'checkboxes',
-  // '*?readOnly': 'text', // TODO: 只读模式
+  '*?readOnly': 'text', // TODO: 只读模式
 };
