@@ -1,18 +1,37 @@
 {
-  "name": "myApp",
-  "version": "0.1.0",
-  "description": "abiz react project template",
+  "name": "abiz-scm",
+  "version": "4.0.0",
+  "description": "百卓优采供应链云平台",
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./client/config/webpack.config.js --mode=development",
     "build": "cross-env NODE_ENV=production webpack --config ./client/config/webpack.config.js --mode=production",
-    "server": "cross-env node ./app.js"
+    "gulp": "gulp",
+    "server:dev": "cross-env NODE_ENV=development node ./bin/www",
+    "server": "cross-env NODE_ENV=production node ./bin/www",
+    "pm2": "pm2 start ./ecosystem.config.js && pm2 monit"
+  },
+  "serverConfig": {
+    "cdn": "",
+    "domainUrl": "scm.abiz.com",
+    "port": 5000,
+    "backendUrl": "http://localhost:3008",
+    "socketTimeout": 60000,
+    "fileSocketTimeout": 180000,
+    "logDist": "log",
+    "clientType": "PC_WEB",
+    "encoding": "base64"
+  },
+  "webpackConfig": {
+    "port": 3333,
+    "devApiPath": "https://focusapi.vemic.com/mock/144/imgList",
+    "assetsPath": "/dist/",
+    "distApiPath": "https://focusapi.vemic.com/mock/144/imgList"
   },
   "keywords": [
-    "react",
-    "abiz"
+    "react"
   ],
-  "author": "guozhaodong",
+  "author": "react",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.11.6",
@@ -23,6 +42,7 @@
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.2",
+    "autoprefixer": "^9.4.3",
     "babel-loader": "^8.1.0",
     "babel-plugin-import": "^1.13.0",
     "clean-webpack-plugin": "^3.0.0",
@@ -36,6 +56,8 @@
     "mini-css-extract-plugin": "^0.11.1",
     "node-sass": "^4.14.1",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.5.0",
     "react-refresh": "^0.8.3",
     "sass-loader": "^10.0.2",
     "style-loader": "^1.2.1",
@@ -59,10 +81,10 @@
     "connect-history-api-fallback": "^1.6.0",
     "cookie-parser": "^1.4.5",
     "copy-text-to-clipboard": "^2.2.0",
+    "ejs": "^3.1.6",
     "events": "^3.3.0",
     "express": "^4.17.1",
     "fr-generator": "^1.0.1",
-    "hbs": "^4.1.1",
     "immutable": "^4.0.0-rc.12",
     "log4js": "^6.3.0",
     "moment": "^2.27.0",
@@ -84,12 +106,13 @@
     "serve-favicon": "^2.5.0",
     "use-debounce": "^5.1.0",
     "validator": "^13.5.2",
+    "walk": "^2.3.14",
     "yamljs": "^0.3.0"
   },
-  "webpackConfig": {
-    "port": 3333,
-    "devApiPath": "https://focusapi.vemic.com/mock/54",
-    "assetsPath": "//localhost:5000/",
-    "distApiPath": "https://focusapi.vemic.com/mock/54"
-  }
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 9",
+    "not op_mini all"
+  ]
 }

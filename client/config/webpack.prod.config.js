@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const path = require('path');
 const {merge} = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -10,8 +11,8 @@ const {pathResolve, getPackageConfig, getEntry} = require('./utils');
 const webpackConfig = getPackageConfig();
 const entryObj = getEntry(pathResolve('src/entry'))
 
-const publicPath = webpackConfig.assetsPath || '//jxcstatic.abiz.com/';
-const distApiPath = webpackConfig.distApiPath || '//jxc.abiz.com/';
+const publicPath = webpackConfig.assetsPath || '//scm.static.abiz.com/';
+const distApiPath = webpackConfig.distApiPath || '//scm.abiz.com/';
 
 module.exports = merge(webpackBaseConfig, {
 	output: {
@@ -36,12 +37,21 @@ module.exports = merge(webpackBaseConfig, {
 					{
 						loader: 'css-loader',
 						options: {
-							importLoaders: 1, //使用import之前还要经过几次loader
+							importLoaders: 2, //使用import之前还要经过几次loader
 							modules: {
 								localIdentName: '[local]--[hash:base64:5]'
 							}
 						}
 					},
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            sourceMap: true,
+                            config: {
+                                path: path.resolve(__dirname, './postcss.config.js') //使用postcss单独的配置文件
+                            }
+                        }
+                    },
 					{
 						loader: 'sass-loader'
 					}
@@ -97,7 +107,7 @@ module.exports = merge(webpackBaseConfig, {
                 filename: `${chunkName}.html`,
                 chunks: [chunkName],
                 template: pathResolve('public/index.html'),
-                favicon: pathResolve('public/favicon.ico')
+                // favicon: pathResolve('public/favicon.ico') // node处理过了
             })
         })
 	),
