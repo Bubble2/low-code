@@ -1,59 +1,63 @@
 /**
- * App
- *
- * @author qiumingsheng
- */
-const cluster = require('cluster');
+ * app
+*/
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const favicon = require('serve-favicon');
+const log4js = require('log4js');
+const history = require('connect-history-api-fallback');
 
-const server = require('./lib/server');
-const logger = require('./lib/logger').getLogger();
-const conf = require('./config').getConfig();
+const errors = require('./lib/errors');
+const logger = require('./lib/logger');
+const conf = require('./lib/utils/tools').GetAppConfig();
+const routerRigister = require('./lib/route');
 
-const numCPUs = require('os').cpus().length;
+const globalFilter = require('./lib/filter/global-filter');
+const csrfFilter = require('./lib/filter/csrf-filter');
 
+const express = require('express');
+const app = express();
 
-// cluster setup
-if (!conf.devMode && conf.clusters && cluster.isMaster) {
-    // Fork workers.
-    for (let i = 0; i < numCPUs; i++) {
-        cluster.fork();
+app.set("trust proxy", true);
+app.set('port', process.env.PORT || conf.serverConfig.port);
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+app.use(favicon(path.join(__dirname, 'favicon.ico')));
+app.use(log4js.connectLogger(
+    logger.getLogger('access'), {
+        level: log4js.levels.INFO,
+        format: '[:remote-addr :method :url :status :response-timems :content-length][:referrer HTTP/:http-version :user-agent]',
+        nolog: /.+(\.(js|css|png|img|ico|png|jpg|gif|txt))$/
     }
-    cluster.on('fork', function(worker, code, signal) {
-        logger.info('Worker ' + worker.process.pid + ' started...');
-    });
+));
 
-    cluster.on('exit', function(worker, code, signal) {
-        logger.info('Worker ' + worker.process.pid + ' died');
-        if (worker.suicide === true) {
-            logger.info(' Worker committed suicide');
-        }
-        cluster.fork();
-    });
-}
-else {
-    const webServer = server.create(__dirname);
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-    function shutdown() {
-        webServer.close(function() {
-            logger.info('Connections closed.')
-            process.exit();
-        });
-    }
+app.use(cookieParser());
+// static
+app.use('/public', express.static(path.join(__dirname, 'public'),{
+    cacheControl: false
+}));
 
-    process.on('SIGINT', function() {
-        logger.info('Caught interrupt signal.');
+// filter
+// app.use(globalFilter.filter);
+// app.use(csrfFilter.filter);
 
-        if (conf.devMode) {
-            shutdown();
-        }
-        else {
-            logger.warn('Interrupt signal in production mode will be ignored.');
-        }
-    });
+routerRigister.route(app);
+// fe
+app.use(history({
+    index:'/dist/index.html',
+}));
+// static
+app.use('/dist', express.static(path.join(__dirname, 'dist'),{
+    cacheControl: false
+}));
 
-    process.on('SIGTERM', function() {
-        logger.info('Caught terminate signal.');
-        shutdown();
-    });
-}
+// error
+app.use(errors.domain);
+app.use(errors.notFound);
+app.use(errors.handler);
 
+module.exports = app;
